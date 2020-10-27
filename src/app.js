@@ -10,29 +10,6 @@ app.use(cors());
 
 const repositories = [];
 
-// function logRequests(request, response, next) {
-//   const { method, url } = request;
-
-//   const logLabel = `[${method.toUpperCase()}] ${url}`;
-
-//   console.log(logLabel);
-
-//   return next(); // Próximo middleware
-// }
-
-// function validateProjectId(request, response, next) {
-//   const { id } = request.params;
-
-//   if (!validate(id)) {
-//     return response.status(400).json({ error: 'Invalid project ID.'})
-//   }
-
-//   return next();
-// }
-
-// app.use(logRequests);
-// app.use('/repositories/:id', validateProjectId);
-
 app.get("/repositories", (request, response) => {
 
   return response.json(repositories);
@@ -104,9 +81,7 @@ app.delete("/repositories/:id", (request, response) => {
   } else {
     return response.status(400).json({ error: 'Repository does not exists.'});
   }
-
   return response.status(204).send();
-
 });
 
 module.exports = app;
